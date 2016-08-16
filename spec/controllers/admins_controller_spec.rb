@@ -8,4 +8,19 @@ RSpec.describe AdminsController, type: :controller do
 			expect(assigns(:admin)).to be_present
 		end
 	end
+
+	describe "POST create" do
+		it "creates new admin" do
+			post :create, admin: { username: "zino", password: "dasda", password_confirmation: "dasda" }
+			expect(response).to redirect_to(items_path)
+			expect(assigns(:admin).username).to eq("zino")
+		end
+
+		it "goes back to the form on failure" do 
+			post :create, admin: { username: "", password: "", password_confirmation: "" }
+			expect(response).to render_template(:new)
+			expect(assigns(:admin)).to be_present
+		end
+	end
+
 end
