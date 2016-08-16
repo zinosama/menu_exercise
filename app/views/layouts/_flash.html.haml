@@ -1,0 +1,4 @@
+-flash.each do |message_type, message|
+	.row
+		%div{ class: [:ui, message_type, :message, :column] }
+			=message

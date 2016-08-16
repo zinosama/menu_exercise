@@ -13,7 +13,7 @@ RSpec.describe Admin, type: :model do
   end
 
   it "should have a password" do 
-  	admin.password 				= ""
+  	admin.password 				      = ""
   	admin.password_confirmation = ""
   	expect(admin.valid?).to be_falsy
   end
