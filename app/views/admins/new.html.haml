@@ -1,0 +1,15 @@
+%h1.title Sign Up
+=form_for @admin, html: { class: ["ui", "form", "column"], id: "signupForm" } do |f|
+	.field
+		=f.label :username
+		=f.text_field :username
+	
+	.field
+		=f.label :password
+		=f.text_field :password
+
+	.field
+		=f.label :password_confirmation
+		=f.text_field :password_confirmation
+
+	.ui.teal.basic.button=f.submit "Register" 
