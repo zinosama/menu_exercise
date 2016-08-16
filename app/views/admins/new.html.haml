@@ -1,5 +1,7 @@
 %h1.title Sign Up
 =form_for @admin, html: { class: ["ui", "form", "column"], id: "signupForm" } do |f|
+	=render 'shared/error_msgs', object: f.object
+	
 	.field
 		=f.label :username
 		=f.text_field :username
