@@ -1,5 +1,12 @@
-%h1 Menu
+%h1.title Menu
 
-%ul
+.ui.five.cards
 	-@items.each do |item|
-		%li #{item.name}, $#{item.price}
+		.card
+			.content
+				.header= item.name.capitalize
+				.meta $ #{item.price}
+				.description= item.description
+			.extra.content
+				%span.left.floated= item.category.capitalize
+				%span.right.floated Add
