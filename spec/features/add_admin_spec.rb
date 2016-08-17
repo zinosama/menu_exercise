@@ -17,7 +17,7 @@ RSpec.describe "Sign Up" do
 			fill_in "admin[password]"						 , with: "dasda" 
 			fill_in "admin[password_confirmation]", with: "dasda"
 			click_on("Register")
-			expect(page).to have_selector(".ui.success.message.column", count: 1)	
+			expect(page).to have_selector(".ui.success.message.column", count: 1)
 		end
 	end
 end

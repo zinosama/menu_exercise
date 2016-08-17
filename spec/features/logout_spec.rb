@@ -1,15 +1,8 @@
-RSpec.describe "Log In" do 
+RSpec.describe "Log Out" do
 
-	describe "create session" do
-		it "displays error msgs when invalid" do
-			visit login_path
-			fill_in "session[username]", with: ""
-			fill_in "session[password]", with: ""
-			click_on("Log In")
-			expect(page).to have_selector(".ui.error.message", count: 1)
-		end
-
-		it "redirects and flashes when valid" do
+	describe "delete session" do
+		it "redirects and flashes" do
+			#login TODO: remove this section
 			visit login_path
 			fill_in "session[username]", with: "zino"
 			fill_in "session[password]", with: "dasda"
@@ -21,9 +14,11 @@ RSpec.describe "Log In" do
 			expect(Admin).to receive(:find_by).at_least(:twice).and_return(admin_stub)
 
 			click_on("Log In")
-			current_path.should eq(items_path)
+
+			#logout
+			click_on("Log Out")
 			expect(page).to have_selector(".ui.success.message", count: 1)
-			expect(page).to have_selector("#username", count: 1)
+			expect(page).to have_selector("#username", count: 0)
 		end
 	end
-end
+end 
