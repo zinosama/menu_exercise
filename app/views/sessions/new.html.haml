@@ -1,0 +1,12 @@
+%h1.title Log In
+
+=form_for :session, url: login_path, html: { class: ["ui", "form", "column"], id: "loginForm" } do |f|
+	.field
+		= f.label :username
+		= f.text_field :username
+
+	.field
+		= f.label :password
+		= f.text_field :password
+
+	.ui.teal.basic.button= f.submit "Log In"
