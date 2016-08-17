@@ -1,5 +1,8 @@
 %h1 Menu
 
+- if logged_in?
+	%p Welcome back, #{current_user.username}!
+
 %ul
 	-@items.each do |item|
 		%li #{item.name}, $#{item.price}
