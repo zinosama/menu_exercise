@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'signup' => 'admins#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
+  root 'items#index'
 
   resources :admins, only: [:new, :create]
 
