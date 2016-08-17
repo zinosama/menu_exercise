@@ -13,5 +13,10 @@ class SessionsController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def destroy
+		logout if logged_in?
+		redirect_and_flash(root_path, :success, "Bye")
+	end
 	
 end
