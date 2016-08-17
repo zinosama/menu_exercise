@@ -1,21 +1,5 @@
 %h1 Menu
 
 %ul
-	-if logged_in?
-		%li 
-			=link_to "New Item", "#"
-		%li
-			=link_to "Log Out", logout_path, method: :delete
-	-else
-		%li
-			=link_to "Sign Up", signup_path
-		%li 
-			=link_to "Log In", login_path
-
-- if logged_in?
-	%p#username Hi, #{current_user.username}!
-
-
-%ul
 	-@items.each do |item|
 		%li #{item.name}, $#{item.price}
