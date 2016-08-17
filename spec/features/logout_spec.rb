@@ -13,7 +13,7 @@ RSpec.describe "Log Out" do
 			expect(admin_stub).to receive(:username).at_least(:twice).and_return("zino")
 			expect(Admin).to receive(:find_by).at_least(:twice).and_return(admin_stub)
 
-			click_on("Log In")
+			click_on("commit")
 
 			#logout
 			click_on("Log Out")
