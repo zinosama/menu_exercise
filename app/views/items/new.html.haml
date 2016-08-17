@@ -1,0 +1,23 @@
+%h1 New Item
+
+=form_for @item, html: { class: ["ui", "form", "column"], id: "newItemForm" } do |f|
+	=render "shared/error_msgs", object: f.object
+
+	.field
+		=f.label :name
+		=f.text_field :name
+
+	.field
+		=f.label :description
+		=f.text_field :description
+
+	.field
+		=f.label :category
+		=f.text_field :category
+
+	.field
+		=f.label :price
+		=f.text_field :price
+
+	=f.submit "Create Item", class: "ui button teal basic"
+
