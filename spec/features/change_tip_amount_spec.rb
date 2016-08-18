@@ -1,4 +1,4 @@
-RSpec.describe "Change Total" do
+RSpec.describe "Change Tip Amount" do
 	describe "before tip" do
 		before do
 			@item = Item.create(name: "item1", price: 1.23) 

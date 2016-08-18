@@ -5,7 +5,7 @@ RSpec.describe "Change Selection" do
 		end
 		
 		it "item in menu & not in selection" do
-			expect(page).to have_no_selector("#selection_#{@item.id}")
+			expect(page).to have_no_selector(".column#selection .header", :text=> @item.name.capitalize)
 			expect(page).to have_selector("#item_#{@item.id}", :text=> @item.name.capitalize, count: 1)
 		end
 
