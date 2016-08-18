@@ -14,7 +14,7 @@ RSpec.describe "Log In" do
 		
 			log_in_as("zino", "dasda")
 
-			current_path.should eq(items_path)
+			expect(current_path).to eq(items_path)
 			expect(page).to have_selector(".ui.success.message", count: 1)
 			expect(page).to have_selector("#username", count: 1)
 		end

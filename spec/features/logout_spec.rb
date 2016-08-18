@@ -9,7 +9,7 @@ RSpec.describe "Log Out" do
 			visit root_url
 			click_on("Log Out")
 			expect(page).to have_selector(".ui.success.message", count: 1)
-			expect(page).to have_selector("#username", count: 0)
+			expect(page).to have_no_selector("#username")
 		end
 	end
 end 

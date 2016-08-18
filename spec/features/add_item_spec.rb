@@ -14,7 +14,7 @@ RSpec.describe "New Item" do
 		fill_in "item[price]", with: 1.23
 		click_on "Create Item"
 
-		current_path.should eq(items_path)
+		expect(current_path).to eq(items_path)
 		expect(page).to have_selector(".ui.success.message", count: 1)
 	end
 end
