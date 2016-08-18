@@ -1,3 +1,7 @@
 Live site:
 
-http://menu-exercise.herokuapp.com/
+http://menu-exercise.herokuapp.com
+
+Optional Features Implemented:
+1. Allow user to include tip into final price.
+2. Allow admin to create daily special items.
