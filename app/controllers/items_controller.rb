@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 	private
 
 	def item_create_params
-		params.require(:item).permit(:name, :description, :category, :price)
+		params[:item][:special_date] = params[:item][:special_date].to_i if params[:item][:special_date]
+		params.require(:item).permit(:name, :description, :category, :price, :special_date)
 	end
 end

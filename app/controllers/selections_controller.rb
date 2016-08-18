@@ -19,13 +19,14 @@ class SelectionsController < ApplicationController
 
 		def valid_item
 			@item = Item.find(params[:item_id])
+			redirect_and_flash(root_path, :error, "Item currently not available!") unless @item.currently_available?
 		rescue ActiveRecord::RecordNotFound
-			redirect_and_flash[root_path, :error, "Invalid item!"]
+			redirect_and_flash(root_path, :error, "Invalid item!")
 		end
 
 		def valid_selection
 			@selection = Selection.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
-			redirect_and_flash[root_path, :error, "Invalid selection!"]
+			redirect_and_flash(root_path, :error, "Invalid selection!")
 		end
 end
