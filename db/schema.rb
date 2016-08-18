@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816185734) do
+ActiveRecord::Schema.define(version: 20160818190136) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "username",        null: false
@@ -21,12 +21,23 @@ ActiveRecord::Schema.define(version: 20160816185734) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",         null: false
     t.string   "description"
     t.string   "category"
-    t.decimal  "price",       null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.decimal  "price",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "special_date"
   end
+
+  create_table "selections", force: :cascade do |t|
+    t.string   "owner_hash", null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "selections", ["item_id"], name: "index_selections_on_item_id"
+  add_index "selections", ["owner_hash"], name: "index_selections_on_owner_hash"
 
 end

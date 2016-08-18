@@ -1,5 +1,60 @@
-%h1 Menu
+.ui.grid
+	.row
+		%h1.title#userSelection Your Selection
 
-%ul
-	-@items.each do |item|
-		%li #{item.name}, $#{item.price}
+	.row
+		.column#selection
+			.ui.five.cards
+				-@selections.each do |selection|
+					.card{id: dom_id(selection)}
+						.content
+							.header= selection.item.name.capitalize
+							.meta $ #{selection.item.price} #{" | #{selection.item.special_date} Special" if selection.item.special_date}
+							.description= selection.item.description
+						.extra.content
+							%span.left.floated= selection.item.category.capitalize if selection.item.category
+							%span.right.floated 
+								=link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove"
+
+	-if @tip_selected
+		.two.column.row
+			%p 
+				Your Total w/ Tip: 
+				%span#total
+					#{@total.round(2)}
+				(#{@tip_selected}% tip 
+				%span 
+					=link_to((semantic_icon class:"fitted icon remove"),items_path, id: "removeTipButton")
+				)
+	-else
+		.two.column.row
+			=form_tag(items_path, method: :get, class: "ui form column") do
+				.ui.buttons
+					.ui.button 
+						Total: $ 
+						%span#total #{@total}
+					.ui.button +
+					=link_to "0%", items_path(tip: 1), class:"ui button"
+					=link_to "10%", items_path(tip: 1.1), class:"ui button" 
+					=link_to "15%", items_path(tip: 1.15), class:"ui button"
+					=link_to "20%", items_path(tip: 1.2), class:"ui button"
+					.ui.button.basic (select tip)
+
+
+	.row
+		%h1.title Menu
+
+	.row
+		.column#menu
+			-@categories.each_value do |category_items|
+				.ui.five.cards
+					-category_items.each do |item|
+						.card{id: dom_id(item)}
+							.content
+								.header= item.name.capitalize
+								.meta $ #{item.price} #{" | #{item.special_date} Special" if item.special_date}
+								.description= item.description
+							.extra.content
+								%span.left.floated= item.category.capitalize if item.category
+								%span.right.floated 
+									=link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add"
