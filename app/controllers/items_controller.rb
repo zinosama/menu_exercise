@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
 
 	def index
-		@items = Item.all
+		@selections = Selection.where(owner_hash: session[:selection_owner_hash])
+		@items = Item.all.to_a - @selections.to_a.map(&:item)
+		@total = Selection.calculate_sum(@selections)
 	end
 	
 	def new

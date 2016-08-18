@@ -1,12 +1,37 @@
-%h1.title Menu
+.ui.grid
+	.row
+		%h1.title#userSelection Your Selection
 
-.ui.five.cards
-	-@items.each do |item|
-		.card
-			.content
-				.header= item.name.capitalize
-				.meta $ #{item.price}
-				.description= item.description
-			.extra.content
-				%span.left.floated= item.category.capitalize
-				%span.right.floated Add
+	.row
+		.column#selection
+			.ui.five.cards
+				-@selections.each do |selection|
+					.card{id: dom_id(selection)}
+						.content
+							.header= selection.item.name.capitalize
+							.meta $ #{selection.item.price}
+							.description= selection.item.description
+						.extra.content
+							%span.left.floated= selection.item.category.capitalize if selection.item.category
+							%span.right.floated 
+								=link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove"
+
+	.row
+		%p.column Your Total: $ #{@total}
+
+	.row
+		%h1.title Menu
+
+	.row
+		.column#menu
+			.ui.five.cards
+				-@items.each do |item|
+					.card{id: dom_id(item)}
+						.content
+							.header= item.name.capitalize
+							.meta $ #{item.price}
+							.description= item.description
+						.extra.content
+							%span.left.floated= item.category.capitalize if item.category
+							%span.right.floated 
+								=link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add"
