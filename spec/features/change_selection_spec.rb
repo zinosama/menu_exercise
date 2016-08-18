@@ -1,8 +1,7 @@
 RSpec.describe "Change Selection" do
 	describe "Adding item to selection" do
 		before do
-			@item = Item.create(name: "item1", price: 1.23) 
-			visit items_path
+			create_item_and_visit_root
 		end
 		
 		it "item in menu & not in selection" do
@@ -26,8 +25,7 @@ RSpec.describe "Change Selection" do
 
 	describe "Removing item from selection" do
 		before do
-			@item = Item.create(name: "item1", price: 1.23)
-			visit items_path
+			create_item_and_visit_root
 			click_on "item_#{@item.id}_add"
 			@selection = Selection.find_by(item_id: @item.id)
 		end
