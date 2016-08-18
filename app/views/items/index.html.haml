@@ -9,7 +9,7 @@
 					.card{id: dom_id(selection)}
 						.content
 							.header= selection.item.name.capitalize
-							.meta $ #{selection.item.price}
+							.meta $ #{selection.item.price} #{" | #{selection.item.special_date} Special" if selection.item.special_date}
 							.description= selection.item.description
 						.extra.content
 							%span.left.floated= selection.item.category.capitalize if selection.item.category
@@ -52,7 +52,7 @@
 						.card{id: dom_id(item)}
 							.content
 								.header= item.name.capitalize
-								.meta $ #{item.price}
+								.meta $ #{item.price} #{" | #{item.special_date} Special" if item.special_date}
 								.description= item.description
 							.extra.content
 								%span.left.floated= item.category.capitalize if item.category

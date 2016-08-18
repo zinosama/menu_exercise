@@ -19,5 +19,9 @@
 		=f.label :price
 		=f.text_field :price
 
+	.field
+		=f.label :special_date
+		=f.select(:special_date, Item.special_dates.to_a, {}, { class: "ui dropdown" })
+
 	=f.submit "Create Item", class: "ui button teal basic"
 
