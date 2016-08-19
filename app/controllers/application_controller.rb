@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   
-	private
+  private
 
-	def redirect_and_flash(target_url, flash_symbol, flash_message)
-		redirect_to target_url
-		flash[flash_symbol] = flash_message
-	end
-	
+  def redirect_and_flash(target_url, flash_symbol, flash_message)
+    redirect_to target_url
+    flash[flash_symbol] = flash_message
+  end
+  
 end

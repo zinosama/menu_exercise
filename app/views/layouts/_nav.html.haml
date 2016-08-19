@@ -1,14 +1,14 @@
 .ui.menu
-	=link_to "Menu", root_path, class: "item"
-	
-	- if logged_in?
-		%a.item#username Hi, #{current_user.username}!
+  =link_to "Menu", root_path, class: "item"
+  
+  - if logged_in?
+    %a.item#username Hi, #{current_user.username}!
 
-	.right.menu
-		-if logged_in?
-			=link_to "New Item", new_item_path, class: "item" 
-			=link_to "Log Out", logout_path, method: :delete, class: "item" 
-		
-		-else
-			=link_to "Sign Up", signup_path, class: "item"
-			=link_to "Log In", login_path, class: "item"
+  .right.menu
+    -if logged_in?
+      =link_to "New Item", new_item_path, class: "item" 
+      =link_to "Log Out", logout_path, method: :delete, class: "item" 
+    
+    -else
+      =link_to "Sign Up", signup_path, class: "item"
+      =link_to "Log In", login_path, class: "item"
