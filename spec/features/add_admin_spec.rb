@@ -17,7 +17,23 @@ RSpec.describe "Sign Up" do
 			fill_in "admin[password]"						 , with: "dasda" 
 			fill_in "admin[password_confirmation]", with: "dasda"
 			click_on("Register")
-			expect(page).to have_selector(".ui.success.message.column", count: 1)
+			expect(page).to have_selector(".ui.success.message", count: 1)
 		end
 	end
+
+	describe "login after signup" do
+		before do
+			visit signup_path
+			fill_in "admin[username]"						 , with: "zino"
+			fill_in "admin[password]"						 , with: "dasda" 
+			fill_in "admin[password_confirmation]", with: "dasda"
+			click_on("Register")
+		end
+
+		it "should automatically login" do
+			expect(current_path).to eq(root_path)
+			expect(page).to have_selector("#username")
+		end
+	end
+
 end

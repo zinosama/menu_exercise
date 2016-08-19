@@ -12,7 +12,7 @@ RSpec.describe AdminsController, type: :controller do
 	describe "POST create" do
 		it "creates new admin" do
 			post :create, admin: { username: "zino", password: "dasda", password_confirmation: "dasda" }
-			expect(response).to redirect_to(items_path)
+			expect(response).to redirect_to(root_path)
 			expect(assigns(:admin).username).to eq("zino")
 		end
 

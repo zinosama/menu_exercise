@@ -4,6 +4,10 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	def log_in(user)
+		session[:admin_id] = user.id
+	end
+
 	def current_user
 		if admin_id = session[:admin_id]
 			@current_user ||= Admin.find_by(id: admin_id) 
