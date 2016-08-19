@@ -5,3 +5,9 @@ http://menu-exercise.herokuapp.com
 Optional Features Implemented:
 1. Allow user to include tip into final price.
 2. Allow admin to create daily special items.
+
+Instruction:
+1. This app allows simple user registration and authentication.
+2. Only authenticated users are allowed to create new menu items.
+3. Menu items created with a special date will only be available to select on that date.
+4. User selection is tied to session instead of account. Therefore, selections are NOT persistent across sessions.
