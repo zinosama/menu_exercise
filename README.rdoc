@@ -13,7 +13,7 @@ Features:
 4. User selection is tied to session instead of account. Therefore, selections are NOT persistent across sessions.
 
 Instruction:
-1. Clone this repo
-2. Run `bundle install` to download all dependencies
-3. Run `rails s` to start local server
-
+1. Clone this repo.
+2. Run `bundle install` to download all dependencies.
+3. Run `rails s` to start local server.
+4. Run `rspec` to run all tests.
