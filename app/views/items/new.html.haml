@@ -21,7 +21,7 @@
 
 	.field
 		=f.label :special_date
-		=f.select(:special_date, Item.special_dates.to_a, {}, { class: "ui dropdown" })
+		=f.select(:special_date, Item.special_dates.to_a, { include_blank: true }, { class: "ui dropdown" })
 
 	=f.submit "Create Item", class: "ui button teal basic"
 
