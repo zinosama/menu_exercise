@@ -6,7 +6,12 @@ class AdminsController < ApplicationController
 
 	def create
 		@admin = Admin.new(admin_create_params)
-		@admin.save ? redirect_and_flash(items_url, :success, "Success. Thank you for registering with us!") : render('new')
+		if @admin.save
+			log_in @admin
+			redirect_and_flash(root_path, :success, "Success. Thank you for registering with us!")
+		else
+			render('new')
+		end
 	end
 
 	private

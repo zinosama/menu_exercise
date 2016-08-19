@@ -18,14 +18,14 @@
 
 	-if @tip_selected
 		.two.column.row
-			%p 
-				Your Total w/ Tip: 
-				%span#total
-					#{@total.round(2)}
-				(#{@tip_selected}% tip 
-				%span 
-					=link_to((semantic_icon class:"fitted icon remove"),items_path, id: "removeTipButton")
-				)
+			.ui.statistic
+				.label 
+					Your Total w/ Tip (#{@tip_selected}% tip 
+					%span 
+						=link_to((semantic_icon class:"fitted icon remove"),items_path, id: "removeTipButton")
+					)
+				.value#total
+					$ #{@total.round(2)}
 	-else
 		.two.column.row
 			=form_tag(items_path, method: :get, class: "ui form column") do
