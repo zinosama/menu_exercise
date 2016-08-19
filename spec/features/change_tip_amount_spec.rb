@@ -7,7 +7,7 @@ RSpec.describe "Change Tip Amount" do
 		end
 
 		it "has correct total" do
-			expect(page).to have_selector("span#total", :text=>"1.23", count: 1)
+			expect(page).to have_selector("#total", :text=>"1.23", count: 1)
 		end
 	end
 
@@ -18,7 +18,7 @@ RSpec.describe "Change Tip Amount" do
 
 		it "adds tip correctly" do
 			click_on "10%"
-			expect(page).to have_selector("span#total", :text=>"1.35", count: 1)
+			expect(page).to have_selector("#total", :text=>"$ 1.35", count: 1)
 		end
 	end
 
@@ -30,7 +30,7 @@ RSpec.describe "Change Tip Amount" do
 
 		it "removes tip correctly" do
 			click_on "removeTipButton"
-			expect(page).to have_selector("span#total", :text=>"1.23", count: 1)
+			expect(page).to have_selector("#total", :text=>"1.23", count: 1)
 		end
 	end
 end
