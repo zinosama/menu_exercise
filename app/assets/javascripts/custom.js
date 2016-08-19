@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	
-	$('.message .close')
+  
+  $('.message .close')
   .on('click', function() {
     $(this)
       .closest('.message')
