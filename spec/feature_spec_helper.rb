@@ -1,3 +1,7 @@
+def create_admin(username, password)
+  Admin.create(username: username, password: password, password_confirmation: password)
+end
+
 def log_in_as(username, password)
   visit login_url
   fill_in "session_username", with: username
