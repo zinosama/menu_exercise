@@ -47,7 +47,7 @@
   .row
     .column#menu
       - @categories.each do |category, category_items|
-        %h2.category-title= category.capitalize
+        %h2.category-title= category.capitalize if category.present?
         .ui.five.cards
           - category_items.each do |item|
             .card{id: dom_id(item)}

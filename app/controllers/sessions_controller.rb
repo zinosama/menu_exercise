@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     admin = Admin.find_by(username: params[:session][:username])
     if admin && admin.authenticate(params[:session][:password])
       log_in admin
-      redirect_and_flash(root_path, :success, "Welcome back, #{admin.username}!")
+      redirect_to root_path, flash: { success: "Welcome back, #{admin.username}!" }
     else
       flash.now[:error] = "Invalid username/password combination"
       render 'new'
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout if logged_in?
-    redirect_and_flash(root_path, :success, "Bye")
+    redirect_to root_path, flash: { success: "Bye" }
   end
   
 end
