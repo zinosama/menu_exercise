@@ -2,7 +2,7 @@
   =link_to "Menu", root_path, class: "item"
   
   - if logged_in?
-    %a.item#username Hi, #{current_user.username}!
+    %a.item#username Hi, #{current_admin.username}!
 
   .right.menu
     -if logged_in?
