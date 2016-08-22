@@ -2,8 +2,7 @@ RSpec.describe "Log Out" do
 
   describe "delete session" do
     it "redirects and flashes" do
-      Admin.create(username: "zino", password: "dasda", password_confirmation: "dasda")
-      
+      create_admin("zino", "dasda")
       log_in_as("zino","dasda")
 
       visit root_url
