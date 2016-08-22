@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @selections = Selection.where(owner_hash: session[:selection_owner_hash])
+    @selections = Selection.where(owner_hash: current_user.hash)
     @categories = Item.group_by_category(Item.all.to_a - @selections.to_a.map(&:item))
 
     @tip_selected = ((params[:tip].to_f - 1) * 100).round(0) if params[:tip]
