@@ -10,8 +10,7 @@ RSpec.describe "Log In" do
     end
 
     it "redirects and flashes when valid" do
-      Admin.create(username: "zino", password: "dasda", password_confirmation: "dasda")
-    
+      create_admin("zino", "dasda")
       log_in_as("zino", "dasda")
 
       expect(current_path).to eq(root_path)
