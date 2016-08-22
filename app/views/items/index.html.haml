@@ -14,7 +14,7 @@
             .extra.content
               %span.left.floated= selection.item.category.capitalize if selection.item.category
               %span.right.floated 
-                =link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove"
+                =link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove", class: "ui label"
 
   -if @tip_selected
     .two.column.row
@@ -46,7 +46,8 @@
 
   .row
     .column#menu
-      -@categories.each_value do |category_items|
+      -@categories.each do |category, category_items|
+        %h2{ style: "text-align: center;margin-top: 1em; "}= category.capitalize
         .ui.five.cards
           -category_items.each do |item|
             .card{id: dom_id(item)}
@@ -55,6 +56,5 @@
                 .meta $ #{item.price} #{" | #{item.special_date} Special" if item.special_date}
                 .description= item.description
               .extra.content
-                %span.left.floated= item.category.capitalize if item.category
                 %span.right.floated 
-                  =link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add"
+                  =link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add", class: "ui label #{'disabled' unless item.currently_available?}"
