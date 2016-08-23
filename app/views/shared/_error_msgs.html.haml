@@ -3,4 +3,4 @@
     .header This form contains #{ pluralize(object.errors.count, "error") }.
     %ul.list
       - object.errors.full_messages.each do |msg|
-        %li= msg
+        %li.validation-error= msg
