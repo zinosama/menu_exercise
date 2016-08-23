@@ -3,7 +3,7 @@ class SelectionsController < ApplicationController
   before_action :valid_selection, only: [:destroy]
 
   def create
-    Selection.find_or_create_by(owner_hash: current_user.hash, item_id: @item.id)
+    Selection.find_or_create_by(owner_hash: current_user.id, item_id: @item.id)
     redirect_and_flash(root_path, :success, "Item added.")
   rescue
     redirect_and_flash(root_path, :error, "Error!")

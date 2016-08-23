@@ -1,16 +1,16 @@
 class User 
-  attr_reader :hash
+  attr_reader :id
   
-  def initialize(session)
-    session[:selection_owner_hash] ||= User.generate_owner_hash
-    @hash = session[:selection_owner_hash]
+  def initialize(id)
+    @id = id
   end
 
-  def self.generate_owner_hash
+  def self.generate_owner_id
     SecureRandom.urlsafe_base64
   end
 
   def self.find_session(session)
-    User.new(session)
+    session[:selection_owner_id] ||= User.generate_owner_id
+    User.new(session[:selection_owner_id])
   end
 end 
