@@ -5,7 +5,7 @@
   .row
     .column#selection
       .ui.five.cards
-        -@selections.each do |selection|
+        - @selections.each do |selection|
           .card{id: dom_id(selection)}
             .content
               .header= selection.item.name.capitalize
@@ -14,30 +14,30 @@
             .extra.content
               %span.left.floated= selection.item.category.capitalize if selection.item.category
               %span.right.floated 
-                =link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove", class: "ui label"
+                = link_to "Remove", selection_path(selection.id), method: :delete, id: "#{dom_id(selection)}_remove", class: "ui mini button"
 
-  -if @tip_selected
+  - if @tip_selected
     .two.column.row
       .ui.statistic
         .label 
           Your Total w/ Tip (#{@tip_selected}% tip 
           %span 
-            =link_to((semantic_icon class:"fitted icon remove"),items_path, id: "removeTipButton")
+            = link_to((semantic_icon class:"fitted icon remove"),items_path, id: "removeTipButton")
           )
         .value#total
           $ #{@total.round(2)}
-  -else
+  - else
     .two.column.row
-      =form_tag(items_path, method: :get, class: "ui form column") do
+      = form_tag(items_path, method: :get, class: "ui form column") do
         .ui.buttons
           .ui.button 
             Total: $ 
             %span#total #{@total}
           .ui.button +
-          =link_to "0%", items_path(tip: 1), class:"ui button"
-          =link_to "10%", items_path(tip: 1.1), class:"ui button" 
-          =link_to "15%", items_path(tip: 1.15), class:"ui button"
-          =link_to "20%", items_path(tip: 1.2), class:"ui button"
+          = link_to "0%", items_path(tip: 1), class:"ui button"
+          = link_to "10%", items_path(tip: 1.1), class:"ui button" 
+          = link_to "15%", items_path(tip: 1.15), class:"ui button"
+          = link_to "20%", items_path(tip: 1.2), class:"ui button"
           .ui.button.basic (select tip)
 
 
@@ -46,10 +46,10 @@
 
   .row
     .column#menu
-      -@categories.each do |category, category_items|
-        %h2{ style: "text-align: center;margin-top: 1em; "}= category.capitalize
+      - @categories.each do |category, category_items|
+        %h2.category-title= category.capitalize
         .ui.five.cards
-          -category_items.each do |item|
+          - category_items.each do |item|
             .card{id: dom_id(item)}
               .content
                 .header= item.name.capitalize
@@ -57,4 +57,4 @@
                 .description= item.description
               .extra.content
                 %span.right.floated 
-                  =link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add", class: "ui label #{'disabled' unless item.currently_available?}"
+                  = link_to "Add", item_selections_path(item), method: :post, id: "#{dom_id(item)}_add", class: "ui mini button #{'disabled' unless item.currently_available?}"
