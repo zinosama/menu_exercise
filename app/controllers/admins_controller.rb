@@ -8,7 +8,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_create_params)
     if @admin.save
       log_in @admin
-      redirect_and_flash(root_path, :success, "Success. Thank you for registering with us!")
+      redirect_to root_path, flash: { success: "Success. Thank you for registering with us!" }
     else
       render('new')
     end

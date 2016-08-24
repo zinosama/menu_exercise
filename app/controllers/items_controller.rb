@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_create_params)
-    @item.save ? redirect_and_flash(items_path, :success, "Item Created!") : render("new") 
+    @item.save ? redirect_to(items_path, flash: { success: "Item Created!" }) : render("new") 
   end
 
   private
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def valid_admin
-    redirect_and_flash(login_path, :error, "Please log in first") unless logged_in?
+    redirect_to(login_path, flash: { error: "Please log in first" }) unless logged_in?
   end
 
 end

@@ -4,27 +4,27 @@ class SelectionsController < ApplicationController
 
   def create
     Selection.find_or_create_by(owner_hash: current_user.id, item_id: @item.id)
-    redirect_and_flash(root_path, :success, "Item added.")
+    redirect_to root_path, flash: { success: "Item added." }
   rescue
-    redirect_and_flash(root_path, :error, "Error!")
+    redirect_to root_path, flash: { error: "Error!" }
   end
 
   def destroy
     @selection.destroy
-    redirect_and_flash(root_path, :success, "Selection removed!")
+    redirect_to root_path, flash: { success: "Selection removed!" }
   end 
 
   private
     def valid_item
       @item = Item.find(params[:item_id])
-      redirect_and_flash(root_path, :error, "Item currently not available!") unless @item.currently_available?
+      redirect_to(root_path, flash: { error: "Item currently not available!" }) unless @item.currently_available?
     rescue ActiveRecord::RecordNotFound
-      redirect_and_flash(root_path, :error, "Invalid item!")
+      redirect_to root_path, flash: { error: "Invalid item!" }
     end
 
     def valid_selection
       @selection = Selection.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_and_flash(root_path, :error, "Invalid selection!")
+      redirect_to root_path, flash: { error: "Invalid selection!" }
     end
 end
